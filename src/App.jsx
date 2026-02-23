@@ -5,9 +5,11 @@ import moviesFromServer from './api/movies.json';
 
 function filterMovies(movies, query) {
   const clearMovies = movies.filter(movie => {
+    const clearQuery = query.toLowerCase().trim();
+
     return (
-      movie.title.toLowerCase().includes(query.toLowerCase().trim()) ||
-      movie.description.toLowerCase().includes(query.toLowerCase().trim())
+      movie.title.toLowerCase().includes(clearQuery) ||
+      movie.description.toLowerCase().includes(clearQuery)
     );
   });
 
