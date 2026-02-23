@@ -5,11 +5,9 @@ import moviesFromServer from './api/movies.json';
 
 function filterMovies(movies, query) {
   const clearMovies = movies.filter(movie => {
-    const clearQuery = query.toLowerCase().trim();
-
     return (
-      movie.title.toLowerCase().includes(clearQuery) ||
-      movie.description.toLowerCase().includes(clearQuery)
+      movie.title.toLowerCase().includes(query) ||
+      movie.description.toLowerCase().includes(query)
     );
   });
 
@@ -19,8 +17,9 @@ function filterMovies(movies, query) {
 export const App = () => {
   const movies = moviesFromServer;
   const [query, setQuery] = useState('');
+  const clearQuery = query.toLowerCase().trim();
 
-  const visibleMovies = filterMovies(movies, query);
+  const visibleMovies = filterMovies(movies, clearQuery);
 
   return (
     <div className="page">
